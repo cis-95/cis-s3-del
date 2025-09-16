@@ -21,6 +21,7 @@ sudo chmod +x /usr/local/bin/cis-s3-del
 ```
 
 ## วิธีการใช้งาน
+ตัวอย่าง รันแบบ 4 workers, batch 500, พิมพ์สถิติทุก 10 วินาที และพัก 200ms ระหว่าง batch
 ```bash
 cis-s3-del \
   -endpoint s3.netapp.local:9000 \
@@ -29,6 +30,8 @@ cis-s3-del \
   -secret "$S3_SECRET_KEY" \
   -bucket my-bucket \
   -prefix "" \
-  -batch 100 \
-  -sleep_ms 200
+  -batch 500 \
+  -workers 4 \
+  -sleep_ms 200 \
+  -stats_sec 10
 ```
