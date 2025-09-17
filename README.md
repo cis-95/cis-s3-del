@@ -15,9 +15,14 @@
 sudo wget https://github.com/cis-95/cis-s3-del/releases/latest/download/cis-s3-del -O /usr/local/bin/cis-s3-del
 ```
 
-### 2. ให้สิทธิ์ในการรันไฟล์ OneBox
+### 2. ให้สิทธิ์ในการรันไฟล์ cis-s3-del
 ```bash
 sudo chmod +x /usr/local/bin/cis-s3-del
+```
+
+### 3. ตรวจสอบ Version เพื่อทดสอบว่า Script ทำงานได้
+```bash
+cis-s3-del version
 ```
 
 ## วิธีการใช้งาน
@@ -34,4 +39,9 @@ cis-s3-del \
   -workers 4 \
   -sleep_ms 200 \
   -stats_sec 10
+```
+
+ตัวอย่างการรันใน Windows ต้องอยู่บรรทัดเดียวกัน
+```bash
+cis-s3-del -endpoint s3.netapp.local:9000 -secure=false -access "$S3_ACCESS_KEY" -secret "$S3_SECRET_KEY" -bucket my-bucket -prefix "" -batch 500 -workers 4 -sleep_ms 200 -stats_sec 10
 ```
